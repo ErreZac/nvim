@@ -41,14 +41,12 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 --hi SpellLocal cterm=underline ctermfg=yellow
 --]]
 
-
-
-
  ---------------- vimtex stuff ------------------------ 
 vim.g.vimtex_view_method = "zathura"
 vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
 vim.g.vimtex_compiler_method = "latexmk"
 vim.g.vimtex_indent_enabled = 0
+vim.g.vimtex_syntax_enabled = 0
 
 
 

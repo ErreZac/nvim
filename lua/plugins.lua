@@ -126,7 +126,14 @@ require('packer').startup(function(use)
             }
 
             require('lspconfig')['texlab'].setup {
-              capabilities = capabilities
+              capabilities = capabilities,
+              settings = {
+                latex = {
+                  build = {
+                    onSave = true;
+                  }
+                }
+              }
             }
         end
     })
