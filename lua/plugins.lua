@@ -22,6 +22,12 @@ require('packer').startup(function(use)
             require('everblush').setup({ nvim_tree = { contrast = true } })
         end
     })
+
+    use ({'RRethy/nvim-base16',
+        config = function()
+            --vim.cmd('colorscheme base16-ayu-dark')
+        end
+    })
  
     --use 'chriskempson/base16-vim'
     --use 'Shougo/deoplete.nvim'
@@ -40,6 +46,8 @@ require('packer').startup(function(use)
                     enable = true,
                 }
             }
+            vim.opt.foldmethod = "indent"
+            vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
         end,
     })
  
