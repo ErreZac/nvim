@@ -5,8 +5,6 @@ vim.api.nvim_set_keymap('n', '<C-t>', ':NvimTreeToggle<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', 'gV', '`[v`]', {noremap = true})
 vim.api.nvim_set_keymap('n', '<esc>', ':noh<return><esc>', {noremap = true})
 
---vim.api.nvim_set_keymap(, {silent = true})
-
 vim.api.nvim_set_keymap('n', '<C-p>', '<Plug>MarkdownPreviewToggle' , {silent = true})
 
 vim.api.nvim_set_keymap('i', '<Up>', '<NOP>', {noremap = true})

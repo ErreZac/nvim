@@ -3,7 +3,7 @@ require('packer').startup(function(use)
     use 'tpope/vim-surround'
     use 'preservim/nerdcommenter'
     use 'lervag/vimtex'
-    use 'vim-scripts/c.vim'
+    --use 'vim-scripts/c.vim'
     use 'mbbill/undotree'
  
     use ({ 'folke/zen-mode.nvim',
@@ -29,10 +29,6 @@ require('packer').startup(function(use)
         end
     })
  
-    --use 'chriskempson/base16-vim'
-    --use 'Shougo/deoplete.nvim'
-    --use 'Shougo/neonippet.vim'
-    --use 'Shougo/neosnippet-snippets'
     use 'iamcco/markdown-preview.nvim'
  
     use ({ 'nvim-treesitter/nvim-treesitter',
@@ -46,8 +42,6 @@ require('packer').startup(function(use)
                     enable = true,
                 }
             }
-            vim.opt.foldmethod = "indent"
-            vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
         end,
     })
  

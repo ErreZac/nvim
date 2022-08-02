@@ -26,6 +26,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hidden = true
 
+vim.opt.foldmethod = "indent"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 --vim.cmd [[
 --hi SpellBad ctermbg=NONE ctermfg=14
 --hi Normal guibg=NONE ctermbg=NONE
@@ -39,8 +42,6 @@ vim.opt.hidden = true
 --]]
 
 
-
--- Load custom tree-sitter grammar for org filetype
 
 
  ---------------- vimtex stuff ------------------------ 
