@@ -15,8 +15,15 @@ require('packer').startup(function(use)
         }
         end,
     })
+
+    use ({'Everblush/everblush.nvim', 
+        as = 'everblush',
+        config = function()
+            require('everblush').setup({ nvim_tree = { contrast = true } })
+        end
+    })
  
-    use 'chriskempson/base16-vim'
+    --use 'chriskempson/base16-vim'
     --use 'Shougo/deoplete.nvim'
     --use 'Shougo/neonippet.vim'
     --use 'Shougo/neosnippet-snippets'

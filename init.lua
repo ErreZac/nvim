@@ -1,10 +1,10 @@
 require('plugins')
 
-vim.cmd [[
-filetype plugin indent on 
-syntax enable
-colorscheme base16-default-dark
-]]
+--vim.cmd [[
+--filetype plugin indent on 
+--syntax enable
+--colorscheme base16-default-dark
+--]]
 
 vim.g['&t_8f'] = "\\<Esc>[38;2;%lu;%lu;%lum"
 vim.g['&t_8b'] = "\\<Esc>[48;2;%lu;%lu;%lum"
