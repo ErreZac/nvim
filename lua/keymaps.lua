@@ -5,7 +5,14 @@ vim.api.nvim_set_keymap('n', '<C-t>', ':NvimTreeToggle<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', 'gV', '`[v`]', {noremap = true})
 vim.api.nvim_set_keymap('n', '<esc>', ':noh<return><esc>', {noremap = true})
 
-vim.api.nvim_set_keymap('n', '<C-p>', '<Plug>MarkdownPreviewToggle' , {silent = true})
+--vim.api.nvim_set_keymap('n', '<C-p>', '<Plug>MarkdownPreviewToggle' , {silent = true})
+-- moving between stuff
+vim.api.nvim_set_keymap('n', '<C-n>', ':bnext<CR>' , {silent = true})
+vim.api.nvim_set_keymap('n', '<C-p>', ':bprevious<CR>' , {silent = true})
+vim.api.nvim_set_keymap('n', '<C-h>', ':wincmd h<CR>' , {silent = true})
+vim.api.nvim_set_keymap('n', '<C-j>', ':wincmd j<CR>' , {silent = true})
+vim.api.nvim_set_keymap('n', '<C-k>', ':wincmd k<CR>' , {silent = true})
+vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>' , {silent = true})
 
 vim.api.nvim_set_keymap('i', '<Up>', '<NOP>', {noremap = true})
 vim.api.nvim_set_keymap('i', '<Down>', '<NOP>', {noremap = true})

@@ -19,7 +19,32 @@ require('packer').startup(function(use)
     use ({'Everblush/everblush.nvim', 
         as = 'everblush',
         config = function()
-            require('everblush').setup({ nvim_tree = { contrast = true } })
+            --require('everblush').setup({ nvim_tree = { contrast = true } })
+        end
+    })
+
+    use ({'catppuccin/nvim', 
+        as = "catppuccin",
+        config = function()
+            vim.g.catppuccin_flavour = "mocha"
+            require("catppuccin").setup({
+                transparent_background = true,
+                styles = {
+                    comments = { "italic" },
+                    conditionals = { "italic" },
+                    loops = {},
+                    functions = {"italic"},
+                    keywords = {},
+                    strings = {},
+                    variables = {},
+                    numbers = {},
+                    booleans = {},
+                    properties = {},
+                    types = {},
+                    operators = {},
+                },
+            })
+            vim.cmd [[colorscheme catppuccin]]
         end
     })
 
@@ -28,7 +53,14 @@ require('packer').startup(function(use)
             --vim.cmd('colorscheme base16-ayu-dark')
         end
     })
- 
+
+    use ({
+        'mastertinner/nvim-quantum',
+        config = function() 
+            --require('quantum').setup() 
+        end,
+    })
+
     use 'iamcco/markdown-preview.nvim'
  
     use ({ 'nvim-treesitter/nvim-treesitter',
@@ -150,4 +182,21 @@ require('packer').startup(function(use)
         }
         end,
     })
+
+    use ({'norcalli/nvim-colorizer.lua', 
+        config = function()
+            require'colorizer'.setup()
+        end
+    })
+
+    --use ({
+        --'nvim-lualine/lualine.nvim',
+        --requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+	--config = function()
+		--require('lualine').setup({
+            ----theme = 'everblush',
+        --})
+	--end
+    --})
+
 end)

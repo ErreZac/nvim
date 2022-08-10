@@ -20,3 +20,10 @@ vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hidden = true
+vim.opt.termguicolors = true
+
+
+--vim.cmd[[colorscheme tokyonight]]
+--vim.g.tokyonight_style = "night"
+--vim.g.tokyonight_italic_comments = true
+--vim.g.tokyonight_italic_functions = true
