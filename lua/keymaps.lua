@@ -1,12 +1,22 @@
+-- undo tree
 vim.api.nvim_set_keymap('n', '<C-u>', ':UndotreeToggle<CR>', {noremap = true})
 
+-- spelling
 vim.api.nvim_set_keymap('n', '<C-s>', ':setlocal spell! spelllang=en_us<CR>', {noremap = true})
+
+-- nvim tree
 vim.api.nvim_set_keymap('n', '<C-t>', ':NvimTreeToggle<CR>', {noremap = true})
+
+-- select all
 vim.api.nvim_set_keymap('n', 'gV', '`[v`]', {noremap = true})
+
+-- esc removes last highlighted search
 vim.api.nvim_set_keymap('n', '<esc>', ':noh<return><esc>', {noremap = true})
 
---vim.api.nvim_set_keymap('n', '<C-p>', '<Plug>MarkdownPreviewToggle' , {silent = true})
--- moving between stuff
+-- zen mode toggle
+vim.api.nvim_set_keymap('n', '<C-z>', ':ZenMode<CR>', {noremap = true})
+
+-- moving between buffers and splits
 vim.api.nvim_set_keymap('n', '<C-n>', ':bnext<CR>' , {silent = true})
 vim.api.nvim_set_keymap('n', '<C-p>', ':bprevious<CR>' , {silent = true})
 vim.api.nvim_set_keymap('n', '<C-h>', ':wincmd h<CR>' , {silent = true})
@@ -14,6 +24,7 @@ vim.api.nvim_set_keymap('n', '<C-j>', ':wincmd j<CR>' , {silent = true})
 vim.api.nvim_set_keymap('n', '<C-k>', ':wincmd k<CR>' , {silent = true})
 vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>' , {silent = true})
 
+-- guru mode for a greater good
 vim.api.nvim_set_keymap('i', '<Up>', '<NOP>', {noremap = true})
 vim.api.nvim_set_keymap('i', '<Down>', '<NOP>', {noremap = true})
 vim.api.nvim_set_keymap('i', '<Left>', '<NOP>', {noremap = true})
@@ -29,13 +40,13 @@ vim.api.nvim_set_keymap('v', '<Down>', '<NOP>', {noremap = true})
 vim.api.nvim_set_keymap('v', '<Left>', '<NOP>', {noremap = true})
 vim.api.nvim_set_keymap('v', '<Right>', '<NOP>', {noremap = true})
 
-vim.api.nvim_set_keymap('n', '<C-z>', ':ZenMode<CR>', {noremap = true})
-
+-- telescope, cannot use it yet
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', {noremap = true})
 
+-- some shitt I copied
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)

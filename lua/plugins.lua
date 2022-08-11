@@ -2,7 +2,15 @@ require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'tpope/vim-surround'
     use 'preservim/nerdcommenter'
-    use 'lervag/vimtex'
+    use ({'lervag/vimtex',
+        config = function()
+            vim.g.vimtex_view_method = "zathura"
+            vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
+            vim.g.vimtex_compiler_method = "latexmk"
+            vim.g.vimtex_indent_enabled = 0
+            vim.g.vimtex_syntax_enabled = 0
+        end
+    })
     --use 'vim-scripts/c.vim'
     use 'mbbill/undotree'
  
@@ -74,6 +82,8 @@ require('packer').startup(function(use)
                     enable = true,
                 }
             }
+            vim.opt.foldmethod = "indent"
+            vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
         end,
     })
  
