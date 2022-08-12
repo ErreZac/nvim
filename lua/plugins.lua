@@ -2,6 +2,7 @@ require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'tpope/vim-surround'
     use 'preservim/nerdcommenter'
+
     use ({'lervag/vimtex',
         config = function()
             vim.g.vimtex_view_method = "zathura"
@@ -11,7 +12,7 @@ require('packer').startup(function(use)
             vim.g.vimtex_syntax_enabled = 0
         end
     })
-    --use 'vim-scripts/c.vim'
+
     use 'mbbill/undotree'
  
     use ({ 'folke/zen-mode.nvim',
@@ -56,21 +57,6 @@ require('packer').startup(function(use)
         end
     })
 
-    use ({'RRethy/nvim-base16',
-        config = function()
-            --vim.cmd('colorscheme base16-ayu-dark')
-        end
-    })
-
-    use ({
-        'mastertinner/nvim-quantum',
-        config = function() 
-            --require('quantum').setup() 
-        end,
-    })
-
-    use 'iamcco/markdown-preview.nvim'
- 
     use ({ 'nvim-treesitter/nvim-treesitter',
         config = function()
             require('nvim-treesitter.configs').setup {
@@ -97,13 +83,13 @@ require('packer').startup(function(use)
  
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
-
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
+
     use ({'hrsh7th/nvim-cmp',
         config = function()
             local cmp = require'cmp'
@@ -199,14 +185,6 @@ require('packer').startup(function(use)
         end
     })
 
-    --use ({
-        --'nvim-lualine/lualine.nvim',
-        --requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-	--config = function()
-		--require('lualine').setup({
-            ----theme = 'everblush',
-        --})
-	--end
-    --})
+    use 'ggandor/lightspeed.nvim'
 
 end)
