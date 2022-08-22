@@ -1,7 +1,6 @@
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'tpope/vim-surround'
-    use 'preservim/nerdcommenter'
 
     use ({'lervag/vimtex',
         config = function()
@@ -186,5 +185,11 @@ require('packer').startup(function(use)
     })
 
     use 'ggandor/lightspeed.nvim'
+
+    use ({'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    })
 
 end)
