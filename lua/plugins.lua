@@ -52,8 +52,28 @@ require('packer').startup(function(use)
                     operators = {},
                 },
             })
-            vim.cmd [[colorscheme catppuccin]]
+            -- vim.cmd [[colorscheme catppuccin]]
         end
+    })
+
+    use ({'ellisonleao/gruvbox.nvim',
+        config = function()
+            require("gruvbox").setup({
+                undercurl = true,
+                underline = true,
+                bold = true,
+                italic = true,
+                strikethrough = true,
+                invert_selection = false,
+                invert_signs = false,
+                invert_tabline = false,
+                invert_intend_guides = false,
+                inverse = true, 
+                contrast = "hard", 
+                overrides = {Normal = {bg = "None", fg = "#fbf1c7"}},
+            })
+            vim.cmd [[colorscheme gruvbox]]
+        end,
     })
 
     use 'nvim-treesitter/nvim-treesitter-textobjects'     
@@ -230,8 +250,17 @@ require('packer').startup(function(use)
         end
     })
 
-    use 'L3MON4D3/LuaSnip'
+    use ({'L3MON4D3/LuaSnip'})
     use 'saadparwaiz1/cmp_luasnip'
+
+    use ({ "iurimateus/luasnip-latex-snippets.nvim",
+        -- requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
+        config = function()
+          require'luasnip-latex-snippets'.setup({use_treesitter=true})
+          -- or setup({ use_treesitter = true })
+        end,
+        ft = "tex",
+    })
 
     use ({ 'nvim-neorg/neorg',
         config = function()
