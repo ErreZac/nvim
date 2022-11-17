@@ -80,7 +80,7 @@ require('packer').startup(function(use)
     use ({ 'nvim-treesitter/nvim-treesitter',
         config = function()
             require('nvim-treesitter.configs').setup {
-                ensure_installed = {"lua", "c", "bash", "latex", "cpp"}, 
+                ensure_installed = {"lua", "c", "bash", "latex", "cpp", "rust"}, 
                 highlight = { enable = true },
                 indent = { enable = true },
                 incremental_selection = {
@@ -235,6 +235,30 @@ require('packer').startup(function(use)
             local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
             require('lspconfig')['clangd'].setup {
                 capabilities = capabilities
+            }
+
+            require('lspconfig')['rust_analyzer'].setup {
+                on_attach = on_attach,
+                settings = {
+                    ["rust-analyzer"] = {
+                        assist = {
+                            importMergeBehavior = "last",
+                            importPrefix = "by_self",
+                        },
+                        diagnostics = {
+                            disabled = { "unresolved-import" }
+                        },
+                        cargo = {
+                            loadOutDirsFromCheck = true
+                        },
+                        procMacro = {
+                            enable = true
+                        },
+                        checkOnSave = {
+                            command = "clippy"
+                        },
+                    }
+                }
             }
 
             require('lspconfig')['texlab'].setup {
