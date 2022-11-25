@@ -274,6 +274,8 @@ require('packer').startup(function(use)
         end
     })
 
+    use ({'simrat39/rust-tools.nvim'})
+
     use ({'L3MON4D3/LuaSnip'})
     use 'saadparwaiz1/cmp_luasnip'
 
