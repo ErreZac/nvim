@@ -56,23 +56,13 @@ require('packer').startup(function(use)
         end
     })
 
-    use ({'ellisonleao/gruvbox.nvim',
+    use ({'luisiacc/gruvbox-baby',
         config = function()
-            require("gruvbox").setup({
-                undercurl = true,
-                underline = true,
-                bold = true,
-                italic = true,
-                strikethrough = true,
-                invert_selection = false,
-                invert_signs = false,
-                invert_tabline = false,
-                invert_intend_guides = false,
-                inverse = true, 
-                contrast = "hard", 
-                overrides = {Normal = {bg = "None", fg = "#fbf1c7"}},
-            })
-            vim.cmd [[colorscheme gruvbox]]
+            vim.g.gruvbox_baby_background_color="dark"
+            vim.g.gruvbox_baby_telescope_theme = 1
+            vim.g.gruvbox_baby_transparent_mode = 0
+            vim.g.gruvbox_baby_use_original_palette = 1
+            vim.cmd[[colorscheme gruvbox-baby]]
         end,
     })
 
@@ -199,9 +189,9 @@ require('packer').startup(function(use)
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' }, -- For luasnip users.
-                }, {
-                        { name = 'buffer' },
-                    })
+                    { name = 'buffer' },
+                    { name = 'path' },
+                })
             })
 
             -- Set configuration for specific filetype.
@@ -276,7 +266,23 @@ require('packer').startup(function(use)
         end
     })
 
-    use ({'simrat39/rust-tools.nvim'})
+    use ({'simrat39/rust-tools.nvim', 
+        config = function()
+            require("rust-tools").setup({
+                tools = {
+                    runnables = {
+                        use_telescope = true,
+                    },
+                    inlay_hints = {
+                        auto = true,
+                        show_parameter_hints = false,
+                        parameter_hints_prefix = "",
+                        other_hints_prefix = "",
+                    },
+                },
+            })
+        end,
+    })
 
     use ({'L3MON4D3/LuaSnip'})
     use 'saadparwaiz1/cmp_luasnip'
@@ -284,8 +290,8 @@ require('packer').startup(function(use)
     use ({ "iurimateus/luasnip-latex-snippets.nvim",
         -- requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
         config = function()
-          require'luasnip-latex-snippets'.setup({use_treesitter=true})
-          -- or setup({ use_treesitter = true })
+            require'luasnip-latex-snippets'.setup({use_treesitter=true})
+            -- or setup({ use_treesitter = true })
         end,
         ft = "tex",
     })
@@ -324,6 +330,136 @@ require('packer').startup(function(use)
                 show_current_context = true,
                 show_current_context_start = true,
                 show_end_of_line = true,
+            }
+        end
+    })
+
+    use ({'nvim-lualine/lualine.nvim',
+        config = function()
+            local colors = {
+                red = '#fb4934',
+                lgrey = '#665c54',
+                grey = '#282828',
+                black = '#1d2021',
+                white = '#fbf1c7',
+                light_green = '#8ec07c',
+                orange = '#d79921',
+                green = '#b8bb26',
+            }
+
+            local theme = {
+                normal = {
+                    a = { fg = colors.white, bg = colors.black },
+                    b = { fg = colors.white, bg = colors.grey },
+                    c = { fg = colors.white, bg = colors.lgrey },
+                    z = { fg = colors.white, bg = colors.black },
+                },
+                insert = { a = { fg = colors.black, bg = colors.light_green } },
+                visual = { a = { fg = colors.black, bg = colors.orange } },
+                replace = { a = { fg = colors.black, bg = colors.green } },
+            }
+
+            local empty = require('lualine.component'):extend()
+            function empty:draw(default_highlight)
+                self.status = ''
+                self.applied_separator = ''
+                self:apply_highlights(default_highlight)
+                self:apply_section_separators()
+                return self.status
+            end
+
+            -- Put proper separators and gaps between components in sections
+            local function process_sections(sections)
+                for name, section in pairs(sections) do
+                    local left = name:sub(9, 10) < 'x'
+                    for pos = 1, name ~= 'lualine_z' and #section or #section - 1 do
+                        table.insert(section, pos * 2, { empty, color = { fg = colors.lgrey, bg = colors.lgrey } })
+                    end
+                    for id, comp in ipairs(section) do
+                        if type(comp) ~= 'table' then
+                            comp = { comp }
+                            section[id] = comp
+                        end
+                        comp.separator = left and { right = '  ' } or { left = '  ' }
+                    end
+                end
+                return sections
+            end
+
+            local function search_result()
+                if vim.v.hlsearch == 0 then
+                    return ''
+                end
+                local last_search = vim.fn.getreg('/')
+                if not last_search or last_search == '' then
+                    return ''
+                end
+                local searchcount = vim.fn.searchcount { maxcount = 9999 }
+                return last_search .. '(' .. searchcount.current .. '/' .. searchcount.total .. ')'
+            end
+
+            local function modified()
+                if vim.bo.modified then
+                    return '+'
+                elseif vim.bo.modifiable == false or vim.bo.readonly == true then
+                    return '-'
+                end
+                return ''
+            end
+
+            require('lualine').setup {
+                options = {
+                    theme = theme,
+                    component_separators = '',
+                    section_separators = { left = '  ', right = '  ' },
+                },
+                sections = process_sections {
+                    lualine_a = { 'mode' },
+                    lualine_b = {
+                        'branch',
+                        'diff',
+                        {
+                            'diagnostics',
+                            source = { 'nvim' },
+                            sections = { 'error' },
+                            diagnostics_color = { error = { bg = colors.red, fg = colors.lgrey } },
+                        },
+                        {
+                            'diagnostics',
+                            source = { 'nvim' },
+                            sections = { 'warn' },
+                            diagnostics_color = { warn = { bg = colors.orange, fg = colors.lgrey } },
+                        },
+                        { 'filename', file_status = false, path = 1 },
+                        { modified, color = { bg = colors.red } },
+                        {
+                            '%w',
+                            cond = function()
+                                return vim.wo.previewwindow
+                            end,
+                        },
+                        {
+                            '%r',
+                            cond = function()
+                                return vim.bo.readonly
+                            end,
+                        },
+                        {
+                            '%q',
+                            cond = function()
+                                return vim.bo.buftype == 'quickfix'
+                            end,
+                        },
+                    },
+                    lualine_c = {},
+                    lualine_x = {},
+                    lualine_y = { search_result, 'filetype' },
+                    lualine_z = { '%l:%c', '%p%%/%L' },
+                },
+                inactive_sections = {
+                    lualine_c = { '%f %y %m' },
+                    lualine_x = {},
+                },
             }
         end
     })
