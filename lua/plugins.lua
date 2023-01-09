@@ -37,7 +37,7 @@ require('packer').startup(function(use)
         config = function()
             vim.g.catppuccin_flavour = "mocha"
             require("catppuccin").setup({
-                transparent_background = true,
+                transparent_background = false,
                 styles = {
                     comments = { "italic" },
                     conditionals = { "italic" },
@@ -61,7 +61,7 @@ require('packer').startup(function(use)
         config = function()
             vim.g.gruvbox_baby_background_color="dark"
             vim.g.gruvbox_baby_telescope_theme = 1
-            vim.g.gruvbox_baby_transparent_mode = 1
+            vim.g.gruvbox_baby_transparent_mode = 0
             vim.g.gruvbox_baby_use_original_palette = 1
             vim.cmd[[colorscheme gruvbox-baby]]
         end,
