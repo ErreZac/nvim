@@ -61,7 +61,7 @@ require('packer').startup(function(use)
         config = function()
             vim.g.gruvbox_baby_background_color="dark"
             vim.g.gruvbox_baby_telescope_theme = 1
-            vim.g.gruvbox_baby_transparent_mode = 0
+            vim.g.gruvbox_baby_transparent_mode = 1
             vim.g.gruvbox_baby_use_original_palette = 1
             vim.cmd[[colorscheme gruvbox-baby]]
         end,
@@ -339,24 +339,25 @@ require('packer').startup(function(use)
         config = function()
             local colors = {
                 red = '#fb4934',
-                lgrey = '#a89984',
-                grey = '#665c54', --282828 
-                black = '#3c3836',
+                lgrey = '#665c54',
+                grey = '#3c3836', --
+                yellow = '#d79921', --282828 
+                black = '#282828 ',
                 white = '#fbf1c7',
                 light_green = '#8ec07c',
-                orange = '#d79921',
+                blue = '#83a598',
                 green = '#b8bb26',
             }
 
             local theme = {
                 normal = {
-                    a = { fg = colors.white, bg = colors.black },
+                    a = { fg = colors.black, bg = colors.yellow },
                     b = { fg = colors.white, bg = colors.grey },
                     c = { fg = colors.white, bg = colors.lgrey },
                     z = { fg = colors.white, bg = colors.black },
                 },
                 insert = { a = { fg = colors.black, bg = colors.light_green } },
-                visual = { a = { fg = colors.black, bg = colors.orange } },
+                visual = { a = { fg = colors.black, bg = colors.blue } },
                 replace = { a = { fg = colors.black, bg = colors.green } },
             }
 

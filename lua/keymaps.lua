@@ -16,6 +16,8 @@ vim.api.nvim_set_keymap('n', '<esc>', ':noh<return><esc>', {noremap = true})
 -- zen mode toggle
 vim.api.nvim_set_keymap('n', '<C-z>', ':ZenMode<CR>', {noremap = true})
 
+vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', {noremap = true})
+
 -- guru mode for a greater good
 vim.api.nvim_set_keymap('i', '<Up>', '<NOP>', {noremap = true})
 vim.api.nvim_set_keymap('i', '<Down>', '<NOP>', {noremap = true})
