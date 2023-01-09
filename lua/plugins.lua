@@ -25,13 +25,6 @@ require('packer').startup(function(use)
         end,
     })
 
-    use ({'Everblush/everblush.nvim', 
-        as = 'everblush',
-        config = function()
-            --require('everblush').setup({ nvim_tree = { contrast = true } })
-        end
-    })
-
     use ({'catppuccin/nvim', 
         as = "catppuccin",
         config = function()
@@ -134,7 +127,7 @@ require('packer').startup(function(use)
 
     use 'kyazdani42/nvim-web-devicons'
 
-    use ({ 'kyazdani42/nvim-tree.lua',
+    use ({ 'nvim-tree/nvim-tree.lua',
         config = function()
             require("nvim-tree").setup()
         end,
