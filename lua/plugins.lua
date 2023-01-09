@@ -1,6 +1,7 @@
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'tpope/vim-surround'
+    use 'christoomey/vim-tmux-navigator'
 
     use ({'lervag/vimtex',
         config = function()
@@ -463,4 +464,5 @@ require('packer').startup(function(use)
             }
         end
     })
+
 end)

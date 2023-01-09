@@ -16,14 +16,6 @@ vim.api.nvim_set_keymap('n', '<esc>', ':noh<return><esc>', {noremap = true})
 -- zen mode toggle
 vim.api.nvim_set_keymap('n', '<C-z>', ':ZenMode<CR>', {noremap = true})
 
--- moving between buffers and splits
-vim.api.nvim_set_keymap('n', '<C-n>', ':bnext<CR>' , {silent = true})
-vim.api.nvim_set_keymap('n', '<C-p>', ':bprevious<CR>' , {silent = true})
-vim.api.nvim_set_keymap('n', '<C-h>', ':wincmd h<CR>' , {silent = true})
-vim.api.nvim_set_keymap('n', '<C-j>', ':wincmd j<CR>' , {silent = true})
-vim.api.nvim_set_keymap('n', '<C-k>', ':wincmd k<CR>' , {silent = true})
-vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>' , {silent = true})
-
 -- guru mode for a greater good
 vim.api.nvim_set_keymap('i', '<Up>', '<NOP>', {noremap = true})
 vim.api.nvim_set_keymap('i', '<Down>', '<NOP>', {noremap = true})
