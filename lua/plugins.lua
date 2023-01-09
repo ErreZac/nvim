@@ -61,7 +61,7 @@ require('packer').startup(function(use)
         config = function()
             vim.g.gruvbox_baby_background_color="dark"
             vim.g.gruvbox_baby_telescope_theme = 1
-            vim.g.gruvbox_baby_transparent_mode = 0
+            vim.g.gruvbox_baby_transparent_mode = 1
             vim.g.gruvbox_baby_use_original_palette = 1
             vim.cmd[[colorscheme gruvbox-baby]]
         end,
@@ -339,9 +339,9 @@ require('packer').startup(function(use)
         config = function()
             local colors = {
                 red = '#fb4934',
-                lgrey = '#665c54',
-                grey = '#282828',
-                black = '#1d2021',
+                lgrey = '#a89984',
+                grey = '#665c54', --282828 
+                black = '#3c3836',
                 white = '#fbf1c7',
                 light_green = '#8ec07c',
                 orange = '#d79921',
@@ -381,7 +381,7 @@ require('packer').startup(function(use)
                             comp = { comp }
                             section[id] = comp
                         end
-                        comp.separator = left and { right = '  ' } or { left = '  ' }
+                        comp.separator = left and { right = '' } or { left = '' }
                     end
                 end
                 return sections
@@ -412,7 +412,7 @@ require('packer').startup(function(use)
                 options = {
                     theme = theme,
                     component_separators = '',
-                    section_separators = { left = '  ', right = '  ' },
+                    section_separators = { left = '', right = '' },
                 },
                 sections = process_sections {
                     lualine_a = { 'mode' },
